@@ -1,0 +1,21 @@
+[Unit]
+Description=Apache Tomcat 8 Servlet Container
+After=syslog.target network.target
+[Service]
+User=root
+Group=root
+Type=forking
+Environment=JAVA_HOME=/opt/java/current
+Environment=CATALINA_HOME=/opt/tomcat
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+Restart=always
+StartLimitBurst=0
+LimitFSIZE=infinity
+LimitCPU=infinity
+LimitAS=infinity
+LimitMEMLOCK=infinity
+LimitNOFILE=64000
+LimitNPROC=64000
+[Install]
+WantedBy=multi-user.target
