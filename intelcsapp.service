@@ -1,0 +1,15 @@
+[Unit]
+Description=Intel CS app
+After=syslog.target network.target
+[Service]
+Type=forking
+PIDFile=/opt/intelcs/production/logs/app.pid
+User=root
+Group=root
+WorkingDirectory=/opt/intelcs/production
+ExecStart=/opt/intelcs/production/bin/daemon.sh start app
+ExecStop=/opt/intelcs/production/bin/daemon.sh stop app
+Restart=always
+[Install]
+WantedBy=multi-user.target
+
